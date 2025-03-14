@@ -8,6 +8,14 @@ body, html {
     overflow: hidden;
 }
 
+@keyframes glitch {
+    0% { text-shadow: 2px 2px red; }
+    25% { text-shadow: -2px -2px blue; }
+    50% { text-shadow: 2px -2px green; }
+    75% { text-shadow: -2px 2px yellow; }
+    100% { text-shadow: 2px 2px red; }
+}
+
 #title-bar {
     background-color: #333;
     color: #fff;
@@ -18,6 +26,8 @@ body, html {
 }
 #title {
     font-weight: bold;
+    margin-left: 17cm;
+    
 }
 
 #terminal {
@@ -25,6 +35,7 @@ body, html {
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
+    border: #333,solid;
 }
 #input-line {
     display: flex;
@@ -43,6 +54,11 @@ body, html {
     outline: none;
     width: 100%;
 }
+
+#user-input:focus {
+    animation: glitch 0.2s infinite;
+}
+
 .output {
     margin-bottom: 10px;
 }
@@ -74,9 +90,11 @@ a {
 }
 a:hover {
     text-decoration: underline;
+    color: #ffff00;
 }
 .color1 { color: #a20eeb; }
 .color2 { color: #00ff00; }
 .color3 { color: #0000ff; }
 .color4 { color: #ffff00; }
 .color5 { color: #25f18b; }
+
