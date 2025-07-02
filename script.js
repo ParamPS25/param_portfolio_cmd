@@ -18,16 +18,183 @@ const terminal = document.getElementById('terminal');
         });
 
         const commands = {
-            help: "Available commands: about, skills, projects, contact, clear , type",
-            about: "I'm Param, a passionate developer with a love for creating innovative solutions.",
-            skills: "Programming Languages: JavaScript, Python, Java, C/Cpp \nWeb Technologies: HTML, CSS, Node ,Express \nOther: Git, Docker",
-            projects: "building...",
-            contact: "Email: bhavsarparam1941@gmail.com <br> GitHub: <a href ='https://github.com/ParamBhavsar'>GitHub link</a> <br> LinkedIn: <a href= 'https://www.linkedin.com/in/param-bhavsar-16bb31272/'>LinkedIn link</a>",
+            help: `
+                <style>
+                .help-table {
+                    max-width: 800px;
+                    border-spacing: 6px 10px;
+                }
+                .help-table td {
+                    padding: 4px 8px;
+                    vertical-align: top;
+                }
+                .help-table .desc {
+                    color: #6ff77b;
+                }
+                .help-title {
+                    color: #00ffff;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    padding-left: 18px
+                }
+                </style>
+
+                <div class="help-title">Available Commands</div>
+                <table class="help-table">
+                    <tr>
+                        <td>auto</td>
+                        <td class="desc">Show all sections in order without typing</td>
+                    </tr>
+                    <tr>
+                        <td>about</td>
+                        <td class="desc">Who I am and what I do</td>
+                    </tr>
+                    <tr>
+                        <td>skills</td>
+                        <td class="desc">Languages, frameworks, tools I use</td>
+                    </tr>
+                    <tr>
+                        <td>projects</td>
+                        <td class="desc">View featured projects with live links</td>
+                    </tr>
+                    <tr>
+                        <td>education</td>
+                        <td class="desc">My academic background</td>
+                    </tr>
+                    <tr>
+                        <td>contact</td>
+                        <td class="desc">Reach out via email, GitHub, LinkedIn</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td class="desc">Try a fun typing speed test</td>
+                    </tr>
+                    <tr>
+                        <td>clear</td>
+                        <td class="desc">Clears the terminal</td>
+                    </tr>
+                </table>
+                `,
+
+
+            about: `
+                <div class="timeline">
+                <div class="timeline-item">
+                    <span style="color:#6ff77b;">I'm Param</span>, a passionate developer focused on building scalable and intuitive digital solutions.<br><br>
+                    I specialize in full-stack web development and enjoy working on projects that combine creativity and performance.
+                </div>
+                </div>
+                `,
+
+
+            skills: `
+                <div class="timeline">
+                <div class="timeline-item"><b>Languages:</b> JavaScript, Python, Java, SQL</div>
+                <div class="timeline-item"><b>Web:</b> HTML, CSS, Tailwind, React.js, Node.js, Express.js, EJS</div>
+                <div class="timeline-item"><b>Database:</b> MongoDB, MySQL, Redis</div>
+                <div class="timeline-item"><b>Tools:</b> Git, GitHub, VS Code</div>
+                </div>
+                `,
+
+            projects: `
+                <div class="timeline">
+                <div class="timeline-item has-point">
+                    <b>WiChat</b><br>
+                        A real-time chat platform with live user presence, image sharing, and scroll-based chat history.<br>
+                        Offers 30+ switchable UI themes and secure login using JWT and HTTP-only cookies.<br>
+                        <a href="https://wichat-4qsa.onrender.com" target="_blank">🌐 Live</a> | 
+                        <a href="https://github.com/ParamPS25/WiChat" target="_blank">🔗 GitHub</a>
+                </div>
+
+                <div class="timeline-item has-point">
+                    <b>EzNotesAi</b><br>
+                        Converts screenshots into summarized notes using Gemini 2.0 Flash with multi-image support.<br>
+                        Includes PDF export, Google OAuth, and modern UI with dark/light theming.<br>
+                        <a href="https://notez-ai.vercel.app" target="_blank">🌐 Live</a> | 
+                        <a href="https://github.com/ParamPS25/NotezAi" target="_blank">🔗 GitHub</a>
+                </div>
+
+                <div class="timeline-item has-point">
+                    <b>BookMyDoc</b><br>
+                        Streamlines doctor appointment booking with dynamic QR verification and status tracking.<br>
+                        Automates email reminders and feedback via Nodemailer, secured via JWT cookies.<br>
+                        <a href="https://bookmydoc-five.vercel.app" target="_blank">🌐 Live</a> | 
+                        <a href="https://github.com/ParamPS25/DoctorAppointmentSystem" target="_blank">🔗 GitHub</a>
+                </div>
+                </div>
+                `,
+
+
+            contact: `
+                <div class="timeline">
+                <div class="timeline-item">
+                    <b>Email:</b> <a href="mailto:bhavsarparam1941@gmail.com">bhavsarparam1941@gmail.com</a>
+                </div>
+                <div class="timeline-item">
+                    <b>GitHub:</b> <a href="https://github.com/ParamPS25" target="_blank">github.com/ParamPS25</a>
+                </div>
+                <div class="timeline-item">
+                    <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/param-bhavsar-16bb31272/" target="_blank">linkedin.com/in/param-bhavsar</a>
+                </div>
+                </div>
+                `,
+
+            education: `
+                <div class="timeline">
+                <div class="timeline-item has-point">
+                    <b>B.E. in Computer Engineering</b><br>
+                    LDRP-ITR, Gandhinagar<br>
+                    2022 – 2026 | CGPA: 8.65 (up to 6th sem)
+                </div>
+
+                <div class="timeline-item has-point">
+                    <b>Class 12th – Science (A Group)</b><br>
+                    Infocity Junior Science College, Gandhinagar<br>
+                    Completed in Apr 2022
+                </div>
+                </div>
+                `,
+
+
             clear: () => {
                 dynamicContent.innerHTML = '';
                 clearSound.play();              // sound effect
                 return '';                      // as returing nothing for commands[cmd]() call just clearing innercontent of div
-            }
+            },
+
+            cls : () => {
+                dynamicContent.innerHTML = '';
+                clearSound.play();              
+                return '';       
+            },
+
+            auto: () => {
+                const sequence = ['about', 'projects', 'skills', 'education', 'contact'];
+                let index = 0;
+
+                function runNextCommand() {
+                    if (index >= sequence.length) return;
+
+                    const cmd = sequence[index++];
+                    const output = document.createElement('div');
+                    output.className = 'output';
+                    output.textContent = `$ ${cmd}`;
+                    dynamicContent.appendChild(output);
+
+                    const response = document.createElement('div');
+                    response.className = 'output';
+                    response.innerHTML = executeCommand(cmd);
+                    dynamicContent.appendChild(response);
+
+                    terminal.scrollTop = terminal.scrollHeight;
+
+                    setTimeout(runNextCommand, 600); // delay between commands
+                }
+
+                runNextCommand();
+                return `<span style="color:#6ff77b;">auto mode ...</span>`;
+            },
+
         };
 
         function executeCommand(cmd) {
@@ -40,7 +207,7 @@ const terminal = document.getElementById('terminal');
                 return commands[cmd];
                 }
             }
-            return `Command not found: ${cmd}. Type 'help' for available commands.`;
+            return `<span style="color:red">Command not found: ${cmd}. Type 'help' for available commands.</span>`;
         }
 
         userInput.addEventListener('keyup', function(event) {           //The keyup event is fired when a key is released from keyboard so, checking for 'Enter'.

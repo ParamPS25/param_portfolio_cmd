@@ -5,11 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Param - Terminal Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Timeline with optional point */
+        .timeline {
+            max-width: 800px;
+            margin-left: 20px;
+            border-left: 2px solid #6ff77b;
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* Only show point when .has-point is added */
+        .timeline-item.has-point::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #6ff77b;
+            border-radius: 50%;
+            position: absolute;
+            left: -26px;
+            top: 3px;
+            box-shadow: 0 0 6px #6ff77b;
+        }
+        .timeline-item b {
+            color: #00ffff;
+        }
+    </style>
+
+
 </head>
 <body>
-    <div id="title-bar">
+    <!-- <div id="title-bar">
         <div id="title">Web Terminal</div>
-    </div>
+    </div> -->
     <div id="terminal">
         <div id="header">
             <div id="ascii-art">
