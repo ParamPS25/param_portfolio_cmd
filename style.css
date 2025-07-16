@@ -1,19 +1,70 @@
-body, html {
+:root {
+  --bg-color: #0d0d0d;
+  --text-color: #cfcfcf;
+  --accent: #4af626;
+  --error: #ff4b4b;
+}
+
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Courier New', monospace;
-    background-color: #000;
+    background: linear-gradient(135deg, #000000, #001f1f, #000000);
+    background-size: 400% 400%;
+    animation: gradientShift 60s ease infinite;
     color: #0f0;
     overflow: hidden;
+    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
 }
 
+.ascii-title {
+  font-family: monospace;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  white-space: pre;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.timeline, .output {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
 @keyframes glitch {
-    0% { text-shadow: 2px 2px red; }
-    25% { text-shadow: -2px -2px blue; }
-    50% { text-shadow: 2px -2px green; }
-    75% { text-shadow: -2px 2px yellow; }
-    100% { text-shadow: 2px 2px red; }
+    0% {
+        text-shadow: 2px 2px red;
+    }
+
+    25% {
+        text-shadow: -2px -2px blue;
+    }
+
+    50% {
+        text-shadow: 2px -2px green;
+    }
+
+    75% {
+        text-shadow: -2px 2px yellow;
+    }
+
+    100% {
+        text-shadow: 2px 2px red;
+    }
 }
 
 #title-bar {
@@ -24,10 +75,11 @@ body, html {
     justify-content: center;
     align-items: center;
 }
+
 #title {
     font-weight: bold;
     margin-left: 17cm;
-    
+
 }
 
 #terminal {
@@ -36,67 +88,125 @@ body, html {
     padding-bottom: 30px;
     box-sizing: border-box;
     overflow-y: auto;
-    border: #333,solid,15px;
+
 }
+
 #input-line {
     display: flex;
     align-items: center;
 }
+
 #prompt {
-    color: #0f0;
-    margin-right: 10px;
+  color: #4af626;
+  font-weight: 500;
+  margin-right: 10px;
 }
+
+
 #user-input {
     background: transparent;
     border: none;
-    color: #0f0;
+    color: #e3e3e3;
     font-family: 'Courier New', monospace;
     font-size: 16px;
     outline: none;
     width: 100%;
 }
 
-#user-input:focus {
-    animation: glitch 0.2s infinite;
+#user-input::after {
+  content: '|';
+  color: var(--accent);
+  animation: blink 1s infinite;
 }
 
-.output {
-    margin-bottom: 10px;
-    padding-left: 10px;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
+
+
+/* #user-input:focus {
+    animation: glitch 0.2s infinite;
+} */
+
+.output {
+  color: #e3e3e3;
+  font-size: 15px;
+  padding: 6px 12px;
+  border-left: 2px solid #4af626;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.output:hover {
+  background-color: rgba(74, 246, 38, 0.1);
+}
+
+
 #header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
+
 #ascii-art {
     font-size: 10px;
     line-height: 1;
     white-space: pre;
     margin-right: 20px;
 }
+
 #image-container {
     width: 100px;
     height: 100px;
     border: 2px solid #0f0;
     overflow: hidden;
 }
+
 #image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 a {
-    color: #00ff00;
-    text-decoration: none;
+  color: #4af626;
+  text-decoration: underline dotted;
+  transition: all 0.2s ease;
 }
+
 a:hover {
-    text-decoration: underline;
+  color: #afffaf;
+  text-decoration: underline solid;
+}
+
+
+.color1 {
+    color: #a20eeb;
+}
+
+.color2 {
+    color: #00ff00;
+}
+
+.color3 {
+    color: #0000ff;
+}
+
+.color4 {
     color: #ffff00;
 }
-.color1 { color: #a20eeb; }
-.color2 { color: #00ff00; }
-.color3 { color: #0000ff; }
-.color4 { color: #ffff00; }
-.color5 { color: #25f18b; }
 
+.color5 {
+    color: #25f18b;
+}
+
+#terminal::-webkit-scrollbar {
+  width: 6px;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 8px;
+  box-shadow: 0 0 4px var(--accent);
+}

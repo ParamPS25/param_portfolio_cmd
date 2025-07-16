@@ -1,19 +1,30 @@
-const terminal = document.getElementById('terminal');
+        const terminal = document.getElementById('terminal');
         const dynamicContent = document.getElementById('dynamic-content');
         const userInput = document.getElementById('user-input');
 
+        // Audio setup
+        const keyPressSound = document.getElementById('press-audio');
+        const keyReleaseSound = document.getElementById('release-audio');
 
-        const keySound = new Audio('mech-keyboard.mp3'); // Load the sound file
-        keySound.volume = 0.5; // Adjust volume
+        keyPressSound.volume = 0.5;
+        keyReleaseSound.volume = 0.4;
 
-        const clearSound = new Audio('whoosh.mp3'); // Load clear command sound
-        clearSound.volume = 0.7; 
+        const clearSound = new Audio('whoosh.mp3');  // Already added
+        clearSound.volume = 0.7;
 
+        // Key down → press sound
+        userInput.addEventListener('keydown', function (event) {
+            if (event.key !== 'Enter') {
+                keyPressSound.currentTime = 0;
+                keyPressSound.play();
+            }
+        });
 
-        userInput.addEventListener('keydown', function(event) {
-            if (event.key !== 'Enter') {  
-                keySound.currentTime = 0; // Reset sound for quick typing
-                keySound.play();
+        // Key up → release sound
+        userInput.addEventListener('keyup', function (event) {
+            if (event.key !== 'Enter') {
+                keyReleaseSound.currentTime = 0;
+                keyReleaseSound.play();
             }
         });
 
@@ -21,15 +32,18 @@ const terminal = document.getElementById('terminal');
             help: `
                 <style>
                 .help-table {
-                    max-width: 800px;
-                    border-spacing: 6px 10px;
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 10px;
                 }
                 .help-table td {
-                    padding: 4px 8px;
-                    vertical-align: top;
+                      padding: 10px;
+                     font-size: 14px;
+                     color: #d3ffd6;
+                     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 }
                 .help-table .desc {
-                    color: #6ff77b;
+                    color: #a0e7a0;
                 }
                 .help-title {
                     color: #00ffff;

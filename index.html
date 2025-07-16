@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Param - Terminal Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    <!-- preloading audio -->
+    <audio id="press-audio" src="key-press.mp3" preload="auto"></audio>
+    <audio id="release-audio" src="key-release.mp3" preload="auto"></audio>
+
     <style>
         /* Timeline with optional point */
         .timeline {
@@ -31,6 +38,7 @@
             top: 3px;
             box-shadow: 0 0 6px #6ff77b;
         }
+
         .timeline-item b {
             color: #00ffff;
         }
@@ -38,19 +46,22 @@
 
 
 </head>
+
 <body>
     <!-- <div id="title-bar">
         <div id="title">Web Terminal</div>
     </div> -->
     <div id="terminal">
         <div id="header">
-            <div id="ascii-art">
-<span class="color1"> ____                        </span>
-<span class="color2">|  _ \ __ _ _ __ __ _ _ __ ___</span>
-<span class="color3">| |_) / _` | '__/ _` | '_ ` _ \</span>
-<span class="color4">|  __/ (_| | | | (_| | | | | | |</span>
-<span class="color5">|_|   \__,_|_|  \__,_|_| |_| |_|</span>
-            </div>
+            <pre class="ascii-title">
+    ██████╗  █████╗ ██████╗  █████╗ ███╗   ███╗
+    ██╔══██╗██╔══██╗██╔══██╗██╔══██╗████╗ ████║
+    ██████╔╝███████║██████╔╝███████║██╔████╔██║
+    ██╔═══╝ ██╔══██║██╔══██╗██╔══██║██║╚██╔╝██║
+    ██║     ██║  ██║██║  ██║██║  ██║██║ ╚═╝ ██║
+    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+    </pre>
+
         </div>
         <div id="intro" class="output">Welcome to Param's Terminal Portfolio</div>
         <div class="output">Type 'help' for available commands.</div>
@@ -63,4 +74,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
